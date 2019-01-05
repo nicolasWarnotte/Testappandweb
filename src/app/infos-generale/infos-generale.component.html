@@ -1,0 +1,471 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6 bg-light">
+      <h2 class="text-center mt-3 mb-3">Vos Informations</h2>
+      <form [formGroup]="myForm" class="form-group">
+        <mat-accordion class="">
+          <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Informations de base
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+            
+              
+                  <div>
+                    <label for="nomCommercial" class="badge">Nom commercial*</label>
+                    <input type="text" name="nomCommercial" id="nomCommercial" class="form-control col-lg-6" [formControl]="myForm.controls['nomCommercial']">
+            
+                    <div class="alert alert-danger col-lg-6" *ngIf="myForm.controls['nomCommercial'].invalid && (myForm.controls['nomCommercial'].dirty || myForm.controls['nomCommercial'].touched)">   
+                      <div *ngIf="myForm.controls['nomCommercial'].errors.required">
+                        Le nom est requis.
+                      </div>
+                    </div>
+                  
+                  </div>
+                  
+                  <div>
+                    <label for="adresseCommerciale" class="badge">Adresse commerciale*</label>
+                    <input type="text" name="adresseCommerciale" id="adresseCommerciale" class="form-control col-lg-8" [formControl]="myForm.controls['adresseCommerciale']">
+            
+                    <div class="alert alert-danger col-lg-8" *ngIf="myForm.controls['adresseCommerciale'].invalid && (myForm.controls['adresseCommerciale'].dirty || myForm.controls['adresseCommerciale'].touched)">   
+                      <div *ngIf="myForm.controls['adresseCommerciale'].errors.required">
+                        L'adresse est requise.
+                      </div>
+                    </div>
+            
+                  </div>
+                  <div class="row col-lg-12">
+                    <div>
+                      <label for="codePostal" class="badge">Code postal*</label>
+                      <input type="number" name="codePostal" id="codePostal" class="form-control col-lg-6" [formControl]="myForm.controls['codePostal']">
+              
+                      <div class="alert alert-danger col-lg-6" *ngIf="myForm.controls['codePostal'].invalid && (myForm.controls['codePostal'].dirty || myForm.controls['codePostal'].touched)">   
+                        <div *ngIf="myForm.controls['codePostal'].errors.required">
+                          Le code postal est requis.
+                        </div>
+                        <div *ngIf="myForm.controls['codePostal'].errors.min || myForm.controls['codePostal'].errors.max">
+                          Le code postal n'est pas valide.
+                        </div>
+                      </div>
+              
+                    </div>
+                    
+                    <div>
+                      <label for="ville" class="badge">Ville*</label>
+                      <input type="text" name="ville" id="ville" class="form-control col-lg-8" [formControl]="myForm.controls['ville']">
+              
+                      <div class="alert alert-danger col-lg-8" *ngIf="myForm.controls['ville'].invalid && (myForm.controls['ville'].dirty || myForm.controls['ville'].touched)">   
+                        <div *ngIf="myForm.controls['ville'].errors.required">
+                          La ville est requise.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                  <div>
+                    <label for="telephone" class="badge">Téléphone*</label>
+                    <input type="tel" name="telephone" id="telephone" class="form-control col-lg-6" [formControl]="myForm.controls['telephone']">
+            
+                    <div class="alert alert-danger col-lg-6" *ngIf="myForm.controls['telephone'].invalid && (myForm.controls['telephone'].dirty || myForm.controls['telephone'].touched)">   
+                      <div *ngIf="myForm.controls['telephone'].errors.required">
+                        Votre numéro de téléphone est requis.
+                      </div>
+                    </div>
+            
+                  </div>
+                  
+                  <div>
+                    <label for="portable" class="badge">Portable</label>
+                    <input type="tel" name="portable" id="portable" class="form-control col-lg-6" [formControl]="myForm.controls['portable']">
+                  </div>
+                  
+                  <div>
+                    <label for="fax" class="badge">Fax</label>
+                    <input type="tel" name="fax" id="fax" class="form-control col-lg-6" [formControl]="myForm.controls['fax']">
+                  </div>
+                  
+                  <div>
+                    <label for="email"  class="badge">Email</label>
+                    <input type="email" name="email" id="email" class="form-control col-lg-6" [formControl]="myForm.controls['email']">
+
+                    <div class="alert alert-danger col-lg-6" *ngIf="myForm.controls['email'].invalid && (myForm.controls['email'].dirty || myForm.controls['email'].touched)">   
+                        <div *ngIf="myForm.controls['email'].errors.email">
+                          Votre adresse email n'est pas valide.
+                        </div>
+                    </div>
+
+                  </div>
+                  
+                  <div>
+                    <label for="siteWeb"  class="badge">Site Web</label>
+                    <input type="text" name="siteWeb" id="siteWeb" class="form-control col-lg-6" [formControl]="myForm.controls['siteWeb']">
+                  </div>
+                  
+                  <div>
+                    <label for="nom"  class="badge">Nom et prenom*</label>
+                    <input type="text" name="nom" id="nom" class="form-control col-lg-6" [formControl]="myForm.controls['nom']">
+            
+                    <div class="alert alert-danger col-lg-6" *ngIf="myForm.controls['nom'].invalid && (myForm.controls['nom'].dirty || myForm.controls['nom'].touched)">   
+                      <div *ngIf="myForm.controls['nom'].errors.required">
+                        Votre nom est requis.
+                      </div>
+                    </div>
+            
+                  </div>
+            
+                  <div>
+                    <label for="secteur" class="badge">Secteur*</label>
+                    <select name="secteur" id="secteur" class="form-control col-lg-6" [formControl]="myForm.controls['secteur']">
+                      <option value="administrationLegislation">Administration et législation</option>
+                      <option value="Batiment et Construction">Bâtiment et construction</option>
+                      <option value="communication">Communication</option>
+                      <option value="culture">Culture</option>
+                      <option value="economieGestion">Economie et gestion</option>
+                      <option value="hotellerieAlimentation">Hôtellerie et Alimentation</option>
+                      <option value="informatiqueTelecommunication">Informatique et télécommunication</option>
+                      <option value="santeBienEtre">Santé et bien-être</option>
+                      <option value="sciences">Sciences</option>
+                      <option value="sciencesHumainesSociales">Sciences Humaines et Sociales</option>
+                      <option value="securite">Sécurité</option>
+                      <option value="techniqueIndustrie">Technique et industrie</option>
+                      <option value="tourismeSportsLoisirs">Tourisme, Sports et Loisirs</option>
+                      <option value="transportsLogistique">Transports et logistique</option>
+                    </select>
+                    <div class="alert alert-danger col-lg-6" *ngIf="myForm.controls['secteur'].invalid && (myForm.controls['secteur'].dirty || myForm.controls['secteur'].touched)">   
+                      <div *ngIf="myForm.controls['secteur'].errors.required">
+                        Secteur requis.
+                      </div>
+                    </div>
+            
+                  </div>
+            
+                  <div *ngIf="myForm.controls['secteur'].value === 'administrationLegislation'">
+                    <label for="sousSecteur" class="badge">Sous secteur*</label>
+                    <select name="sousSecteur" id="sousSecteur" class="form-control col-lg-6" [formControl]="myForm.controls['sousSecteur']">
+                        <option value="sousInformatique">Sous informatique</option>
+                        <option value="sousEnseignement">Sous enseignement</option>
+                    </select>
+            
+                    <div class="alert alert-danger col-lg-6" *ngIf="myForm.controls['sousSecteur'].invalid && (myForm.controls['sousSecteur'].dirty || myForm.controls['sousSecteur'].touched)">   
+                      <div *ngIf="myForm.controls['sousSecteur'].errors.required">
+                        Le sous secteur est requis.
+                      </div>
+                    </div>
+            
+                  </div>
+
+                  <div *ngIf="myForm.controls['secteur'].value === 'batimentConstruction'">
+                      <label for="sousSecteur" class="badge">Sous secteur*</label>
+                      <select name="sousSecteur" id="sousSecteur" class="form-control col-lg-6" [formControl]="myForm.controls['sousSecteur']">
+                          <option value="sousInformatique">Batiment</option>
+                          <option value="sousEnseignement">Construction</option>
+                      </select>
+              
+                      <div class="alert alert-danger col-lg-6" *ngIf="myForm.controls['sousSecteur'].invalid && (myForm.controls['sousSecteur'].dirty || myForm.controls['sousSecteur'].touched)">   
+                        <div *ngIf="myForm.controls['sousSecteur'].errors.required">
+                          Le sous secteur est requis.
+                        </div>
+                      </div>
+              
+                    </div>
+            
+                  <div>
+                    <label for="description" class="badge">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="3" class="form-control" [formControl]="myForm.controls['description']"></textarea>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <label for="centreVille" class="badge">Centre Ville</label>
+                      <input type="checkbox" name="centreVille" id="centreVille" class="checkbox" [formControl]="myForm.controls['centreVille']">
+                    </div>
+              
+                    <div>
+                      <label for="pmr" class="badge">Accès PMR</label>
+                      <input type="checkbox" name="pmr" id="pmr" class="checkbox" [formControl]="myForm.controls['pmr']">
+                    </div>
+                  </div>
+                <mat-action-row>
+                  <button class="btn btn-light text-primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+          </mat-expansion-panel>
+          
+          <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Informations complémentaires
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+            
+              <div>
+                <label for="typeHeure" class="badge">Types d'Heures</label>
+                <select name="typeHeure" id="typeHeure" class="form-control" [formControl]="myForm.controls['typeHeure']">
+                  <option value="heureOuverture">Heures d'ouverture</option>
+                  <option value="heureFermeture">Heures de fermeture</option>
+                </select>
+              </div>
+
+              <div *ngIf="myForm.controls['typeHeure'].value === 'heureOuverture'">
+                <table>
+                  <tr>
+                    <td></td>
+                    <td>De</td>
+                    <td>à</td>
+                    <td *ngIf="myForm.controls['lundiMidi'].value === true || myForm.controls['mardiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value === true || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true">De</td>
+                    <td *ngIf="myForm.controls['lundiMidi'].value === true || myForm.controls['mardiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value === true || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true">à</td>
+                    <td>Rdv</td>
+                    <td>Midi</td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-1">Lundi</td>
+                    <td><input type="text" class="form-control" name="lundiDeMatin" [formControl]="myForm.controls['lundiDeMatin']"></td>
+                    <td><input type="text"  class="form-control" name="lundiAMatin" [formControl]="myForm.controls['lundiAMatin']"></td>
+                    <td *ngIf="myForm.controls['lundiMidi'].value === true"><input type="text" class="form-control" name="lundiDeSoir" [formControl]="myForm.controls['lundiDeSoir']"></td>
+                    <td *ngIf="myForm.controls['lundiMidi'].value === true"><input type="text" class="form-control" name="lundiASoir" [formControl]="myForm.controls['lundiASoir']"></td>
+                    <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true) && myForm.controls['lundiMidi'].value !== true"><input type="text" class="form-control" disabled></td>
+                    <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true) &&  myForm.controls['lundiMidi'].value !== true"><input type="text"  class="form-control" disabled></td>
+                    <td class="text-center"><input type="checkbox" name="lundiRdv" [formControl]="myForm.controls['lundiRdv']"></td>
+                    <td class="text-center"><input type="checkbox" name="lundiMidi" [formControl]="myForm.controls['lundiMidi']"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-lg-1">Mardi</td>
+                    <td><input type="text" class="form-control" name="mardiDeMatin" [formControl]="myForm.controls['mardiDeMatin']"></td>
+                    <td><input type="text"  class="form-control" name="mardiAMatin" [formControl]="myForm.controls['mardiAMatin']"></td>
+                    <td *ngIf="myForm.controls['mardiMidi'].value === true"><input type="text" class="form-control" name="mardiDeSoir" [formControl]="myForm.controls['mardiDeSoir']"></td>
+                    <td *ngIf="myForm.controls['mardiMidi'].value === true"><input type="text"  class="form-control" name="mardiASoir" [formControl]="myForm.controls['mardiASoir']"></td>
+                    <td *ngIf="(myForm.controls['lundiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true) && myForm.controls['mardiMidi'].value !== true"><input type="text" class="form-control" disabled></td>
+                    <td *ngIf="(myForm.controls['lundiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true) &&  myForm.controls['mardiMidi'].value !== true"><input type="text"  class="form-control" disabled></td>
+                    <td class="text-center"><input type="checkbox" name="mardiRdv" [formControl]="myForm.controls['mardiRdv']"></td>
+                    <td class="text-center"><input type="checkbox" name="mardiMidi" [formControl]="myForm.controls['mardiMidi']"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-lg-1">Mercredi</td>
+                    <td><input type="text" class="form-control" name="mercrediDeMatin" [formControl]="myForm.controls['mercrediDeMatin']"></td>
+                    <td><input type="text"  class="form-control" name="mercrediAMatin" [formControl]="myForm.controls['mercrediAMatin']"></td>
+                    <td *ngIf="myForm.controls['mercrediMidi'].value === true"><input type="text" class="form-control" name="mercrediDeSoir" [formControl]="myForm.controls['mercrediDeSoir']"></td>
+                    <td *ngIf="myForm.controls['mercrediMidi'].value === true"><input type="text"  class="form-control" name="mercrediASoir" [formControl]="myForm.controls['mercrediASoir']"></td>
+                    <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['lundiMidi'].value === true || myForm.controls['jeudiMidi'].value || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true) && myForm.controls['mercrediMidi'].value !== true"><input type="text" class="form-control" disabled></td>
+                    <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['lundiMidi'].value === true || myForm.controls['jeudiMidi'].value || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true) &&  myForm.controls['mercrediMidi'].value !== true"><input type="text"  class="form-control" disabled></td>
+                    <td class="text-center"><input type="checkbox" name="mercrediRdv" [formControl]="myForm.controls['mercrediRdv']"></td>
+                    <td class="text-center"><input type="checkbox" name="mercrediMidi" [formControl]="myForm.controls['mercrediMidi']"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-lg-1">Jeudi</td>
+                    <td><input type="text" class="form-control" name="jeudiDeMatin" [formControl]="myForm.controls['jeudiDeMatin']"></td>
+                    <td><input type="text"  class="form-control" name="jeudiAMatin" [formControl]="myForm.controls['jeudiAMatin']"></td>
+                    <td *ngIf="myForm.controls['jeudiMidi'].value === true"><input type="text" class="form-control" name="jeudiDeSoir" [formControl]="myForm.controls['jeudiDeSoir']"></td>
+                    <td *ngIf="myForm.controls['jeudiMidi'].value === true"><input type="text"  class="form-control" name="jeudiASoir" [formControl]="myForm.controls['jeudiASoir']"></td>
+                    <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['lundiMidi'].value === true || myForm.controls['mercrediMidi'].value || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true) && myForm.controls['jeudiMidi'].value !== true"><input type="text" class="form-control" disabled></td>
+                    <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['lundiMidi'].value === true || myForm.controls['mercrediMidi'].value || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true) &&  myForm.controls['jeudiMidi'].value !== true"><input type="text"  class="form-control" disabled></td>
+                    <td class="text-center"><input type="checkbox" name="jeudiRdv" [formControl]="myForm.controls['jeudiRdv']"></td>
+                    <td class="text-center"><input type="checkbox" name="jeudiMidi" [formControl]="myForm.controls['jeudiMidi']"></td>
+                  </tr>
+
+                  <tr>
+                      <td class="col-lg-1">Vendredi</td>
+                      <td><input type="text" class="form-control" name="vendrediDeMatin" [formControl]="myForm.controls['vendrediDeMatin']"></td>
+                      <td><input type="text"  class="form-control" name="vendrediAMatin" [formControl]="myForm.controls['vendrediAMatin']"></td>
+                      <td *ngIf="myForm.controls['vendrediMidi'].value === true"><input type="text" class="form-control" name="vendrediDeSoir" [formControl]="myForm.controls['vendrediDeSoir']"></td>
+                      <td *ngIf="myForm.controls['vendrediMidi'].value === true"><input type="text"  class="form-control" name="vendrediASoir" [formControl]="myForm.controls['vendrediASoir']"></td>
+                      <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['lundiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value === true || myForm.controls['samediMidi'].value === true  || myForm.controls['dimancheMidi'].value === true  ) && myForm.controls['vendrediMidi'].value !== true"><input type="text" class="form-control" disabled></td>
+                      <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['lundiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value === true || myForm.controls['samediMidi'].value === true || myForm.controls['dimancheMidi'].value === true) &&  myForm.controls['vendrediMidi'].value !== true"><input type="text"  class="form-control" disabled></td>
+                      <td class="text-center"><input type="checkbox" name="vendrediRdv" [formControl]="myForm.controls['vendrediRdv']"></td>
+                      <td class="text-center"><input type="checkbox" name="vendrediMidi" [formControl]="myForm.controls['vendrediMidi']"></td>
+                    </tr>
+
+                    <tr>
+                      <td class="col-lg-1">Samedi</td>
+                      <td><input type="text" class="form-control" name="samediDeMatin" [formControl]="myForm.controls['samediDeMatin']"></td>
+                      <td><input type="text"  class="form-control" name="samediAMatin" [formControl]="myForm.controls['samediAMatin']"></td>
+                      <td *ngIf="myForm.controls['samediMidi'].value === true"><input type="text" class="form-control" name="samediDeSoir" [formControl]="myForm.controls['samediDeSoir']"></td>
+                      <td *ngIf="myForm.controls['samediMidi'].value === true"><input type="text"  class="form-control" name="samediASoir" [formControl]="myForm.controls['samediASoir']"></td>
+                      <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['lundiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value === true || myForm.controls['vendrediMidi'].value === true || myForm.controls['dimancheMidi'].value === true) && myForm.controls['samediMidi'].value !== true"><input type="text" class="form-control" disabled></td>
+                      <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['lundiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value === true || myForm.controls['vendrediMidi'].value === true || myForm.controls['dimancheMidi'].value === true) &&  myForm.controls['samediMidi'].value !== true"><input type="text"  class="form-control" disabled></td>
+                      <td class="text-center"><input type="checkbox" name="samediRdv" [formControl]="myForm.controls['samediRdv']"></td>
+                      <td class="text-center"><input type="checkbox" name="samediMidi" [formControl]="myForm.controls['samediMidi']"></td>
+                    </tr>
+
+                    <tr *ngIf="myForm.controls['dimancheOuNon'].value === true">
+                      <td class="col-lg-1">Dimanche</td>
+                      <td><input type="text" class="form-control" name="dimancheDeMatin" [formControl]="myForm.controls['dimancheDeMatin']"></td>
+                      <td><input type="text"  class="form-control" name="dimancheAMatin" [formControl]="myForm.controls['dimancheAMatin']"></td>
+                      <td *ngIf="myForm.controls['dimancheMidi'].value === true"><input type="text" class="form-control" name="dimancheDeSoir" [formControl]="myForm.controls['dimancheDeSoir']"></td>
+                      <td *ngIf="myForm.controls['dimancheMidi'].value === true"><input type="text"  class="form-control" name="dimancheASoir" [formControl]="myForm.controls['dimancheASoir']"></td>
+                      <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['lundiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value === true || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true) && myForm.controls['dimancheMidi'].value !== true"><input type="text" class="form-control" disabled></td>
+                      <td *ngIf="(myForm.controls['mardiMidi'].value === true || myForm.controls['lundiMidi'].value === true || myForm.controls['mercrediMidi'].value === true || myForm.controls['jeudiMidi'].value === true || myForm.controls['vendrediMidi'].value === true || myForm.controls['samediMidi'].value === true) &&  myForm.controls['dimancheMidi'].value !== true"><input type="text"  class="form-control" disabled></td>
+                      <td class="text-center"><input type="checkbox" name="dimancheRdv" [formControl]="myForm.controls['dimancheRdv']"></td>
+                      <td class="text-center"><input type="checkbox" name="dimancheMidi" [formControl]="myForm.controls['dimancheMidi']"></td>
+                    </tr>
+                </table>
+                <div class="row">
+                  <label for="dimancheOuNon" class="badge">Ouvert le dimanche</label>
+                  <input type="checkbox" name="dimancheOuNon" id="dimancheOuNon" [formControl]="myForm.controls['dimancheOuNon']">
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td></td>
+                  <td>Du</td>
+                  <td>Au</td>
+                </tr>
+                <tr>
+                  <td class="col-lg-1">Congés</td>
+                  <td>
+                    <input matInput [matDatepicker]="du" placeholder="Choose a date" name="congeDu" id="au" [formControl]="myForm.controls['congeDu']">
+                    <mat-datepicker-toggle matSuffix [for]="du"></mat-datepicker-toggle>
+                    <mat-datepicker #du></mat-datepicker>
+                  </td>
+                  <td>
+                      <input matInput [matDatepicker]="au" placeholder="Choose a date" name="congeAu" id="au" [formControl]="myForm.controls['congeAu']">
+                      <mat-datepicker-toggle matSuffix [for]="au"></mat-datepicker-toggle>
+                      <mat-datepicker #au></mat-datepicker>
+                  </td>
+                </tr>
+              </table>
+              <div>
+                <label for="congeCom" class="badge">Commentaires</label>
+                <input type="text" name="congeCom" id="congeCom" class="form-control" [formControl]="myForm.controls['congeCom']">
+                <div class="alert alert-danger" *ngIf="myForm.controls['congeCom'].invalid && (myForm.controls['congeCom'].dirty || myForm.controls['congeCom'].touched)">   
+                  <div *ngIf=" myForm.controls['congeCom'].errors.maxlength">
+                    Votre commentaire ne peut pas dépasser 50 caractères.
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label for="cta" class="badge">Bouton d'appel à l'action</label>
+                <input type="text" name="cta" id="cta" class="form-control col-lg-4" [formControl]="myForm.controls['cta']">
+                <div class="alert alert-danger" *ngIf="myForm.controls['cta'].invalid && (myForm.controls['cta'].dirty || myForm.controls['cta'].touched)">   
+                  <div *ngIf=" myForm.controls['cta'].errors.maxlength">
+                    Vous ne pouvez pas dépasser 20 caractères.
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="motCommercant" class="badge">Le mot du commerçant</label>
+                <textarea name="motCommercant" class="form-control" [formControl]="myForm.controls['motCommercant']"></textarea>
+              </div>
+              
+              <mat-action-row>
+                <button class="btn btn-light text-danger" (click)="prevStep()">Previous</button>
+                <button class="btn btn-light text-primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Média
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div>
+                <h2>Votre logo</h2>
+                <img [src]="logourl" height="50"> <br/>
+                <input type='file' id="logo" (change)="onSelectLogo($event)">
+              </div>
+              <div>
+                <h2>Votre photo</h2>
+                <img [src]="photoCommercanturl" height="200"> <br/>
+                <input type='file' id="logo" (change)="onSelectphotoCommercant($event)">
+              </div>
+              
+              
+              <mat-action-row>
+                <button class="btn btn-light text-danger" (click)="prevStep()">Previous</button>
+                <button class="btn btn-light text-primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Informations légales
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+                <div>
+                  <label for="entiteLegale" class="badge">Entité légale*</label>
+                  <input type="text" name="entiteLegale" id="entiteLegale" class="form-control col-lg-4" [formControl]="myForm.controls['entiteLegale']">
+                  <div class="alert alert-danger col-lg-4" *ngIf="myForm.controls['entiteLegale'].invalid && (myForm.controls['entiteLegale'].dirty || myForm.controls['entiteLegale'].touched)">   
+                    <div *ngIf="myForm.controls['entiteLegale'].errors.required">
+                      L'entité légale est requise
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label for="bceTva" class="badge">N° BCE ou TVA*</label>
+                  <input type="number" name="bceTva" id="bceTva" class="form-control col-lg-4" [formControl]="myForm.controls['bceTva']">
+                  <div class="alert alert-danger col-lg-4" *ngIf="myForm.controls['bceTva'].invalid && (myForm.controls['bceTva'].dirty || myForm.controls['bceTva'].touched)">   
+                    <div *ngIf="myForm.controls['bceTva'].errors.required">
+                      Le numéro de Tva ou de BCE est requis.
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label for="nomPrenom" class="badge">Nom et prénom représentant*</label>
+                  <input type="text" name="nomPrenom" id="nomPrenom" class="form-control col-lg-4" [formControl]="myForm.controls['nomPrenom']">
+                  <div class="alert alert-danger col-lg-4" *ngIf="myForm.controls['nomPrenom'].invalid && (myForm.controls['nomPrenom'].dirty || myForm.controls['nomPrenom'].touched)">   
+                    <div *ngIf="myForm.controls['nomPrenom'].errors.required">
+                      Le nom et prénom du représentant sont requis.
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label for="telephoneRepresentant" class="badge">Téléphone représentant*</label>
+                  <input type="tel" name="telephoneRepresentant" id="telephoneRepresentant" class="form-control col-lg-4" [formControl]="myForm.controls['telephoneRepresentant']">
+                  <div class="alert alert-danger col-lg-4" *ngIf="myForm.controls['telephoneRepresentant'].invalid && (myForm.controls['telephoneRepresentant'].dirty || myForm.controls['telephoneRepresentant'].touched)">   
+                    <div *ngIf="myForm.controls['telephoneRepresentant'].errors.required">
+                      Le numéro de telephone du représentant est requis.
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label for="emailReprésentant" class="badge">Email représentant*</label>
+                  <input type="email" name="emailReprésentant" id="emailReprésentant" class="form-control col-lg-4" [formControl]="myForm.controls['emailReprésentant']">
+                  <div class="alert alert-danger col-lg-4" *ngIf="myForm.controls['emailReprésentant'].invalid && (myForm.controls['emailReprésentant'].dirty || myForm.controls['emailReprésentant'].touched)">   
+                    <div *ngIf="myForm.controls['emailReprésentant'].errors.required">
+                      L'email du représentant est requis.
+                    </div>
+                  </div>
+                </div> 
+              <mat-action-row>
+                <button class="btn btn-light text-danger" (click)="prevStep()">Previous</button>
+                <button class="btn btn-light text-primary" (click)="nextStep()">End</button>
+              </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </form>
+    </div>
+    <div class="col-lg-6 bg-light">
+      <h2 class="text-center mt-3">Prévisualisation du résultat</h2>
+      <mat-card class="example-card mt-3">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"><img [src]="logourl" height="50" width="50px"></div>
+            <mat-card-title>{{myForm.controls['nomCommercial'].value}}</mat-card-title>
+            <mat-card-subtitle>{{myForm.controls['secteur'].value}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image [src]="photoCommercanturl" class="mt-3" height="200px">
+          <mat-card-content>
+            <div *ngIf="myForm.controls['ville'].value != ''">Ville: {{myForm.controls['ville'].value}}</div>
+            <div *ngIf="myForm.controls['adresseCommerciale'].value != ''">Adresse: {{myForm.controls['adresseCommerciale'].value}}</div>            
+            <div *ngIf="myForm.controls['telephone'].value != ''">Telephone: {{myForm.controls['telephone'].value}}</div>
+            <div *ngIf="myForm.controls['portable'].value != ''">Portable: {{myForm.controls['portable'].value}}</div>
+            <div *ngIf="myForm.controls['fax'].value != ''">Fax: {{myForm.controls['fax'].value}}</div>
+            <div *ngIf="myForm.controls['email'].value != ''">Email: {{myForm.controls['email'].value}}</div>
+            <div *ngIf="myForm.controls['siteWeb'].value != ''"><a href="myForm.controls['siteWeb'].value">{{myForm.controls['siteWeb'].value}}</a></div>
+            
+            <div *ngIf="myForm.controls['centreVille'].value === true">Situé dans le centre ville</div>
+            <div *ngIf="myForm.controls['pmr'].value === true">Accessible aux personnes à mobilité réduite</div>
+            <div *ngIf="myForm.controls['cta'].value != ''" class="btn btn-warning">{{myForm.controls['cta'].value}}</div>
+          </mat-card-content>
+        </mat-card>
+        
+      
+
+    </div>
+    
+  </div>
+</div>
