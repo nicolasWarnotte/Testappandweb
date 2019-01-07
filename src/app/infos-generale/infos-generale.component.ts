@@ -104,12 +104,12 @@ export class InfosGeneraleComponent implements OnInit {
     cta:string,
     motCommercant:string,
     logo:ImageData,
+    photoCommercant:ImageData,
     entiteLegale:string,
     bceTva:number,
     nomPrenom:string,
     telephoneRepresentant:number,
     emailReprésentant:string,
-
   };
   get output(): {nomCommercial: string; adresseCommerciale:string; codePostal:number; ville:string; telephone:number;
      portable:number; fax:number; email:string; siteWeb:string; nom:string ;secteur:string; sousSecteur:string;
@@ -122,7 +122,7 @@ export class InfosGeneraleComponent implements OnInit {
       samediDeSoir: string; samediASoir: string; samediRdv:boolean; samediMidi:boolean; dimancheDeMatin: string; dimancheAMatin: string; 
       dimancheDeSoir: string; dimancheASoir: string; dimancheRdv:boolean; dimancheMidi:boolean; congeDu:string; congeAu:string; 
       congeCom:string; dimancheOuNon:boolean; cta:string; motCommercant:string; logo:ImageData; entiteLegale:string; bceTva:number;
-      nomPrenom:string; telephoneRepresentant:number; emailReprésentant:string;}{
+      nomPrenom:string; telephoneRepresentant:number; emailReprésentant:string; photoCommercant:ImageData;}{
    return this._output;
  }
  set output(value:{nomCommercial: string; adresseCommerciale:string; codePostal:number; ville:string; telephone:number;
@@ -136,7 +136,7 @@ export class InfosGeneraleComponent implements OnInit {
    samediDeSoir: string; samediASoir: string; samediRdv:boolean; samediMidi:boolean; dimancheDeMatin: string; dimancheAMatin: string; 
    dimancheDeSoir: string; dimancheASoir: string; dimancheRdv:boolean; dimancheMidi:boolean; congeDu:string; congeAu:string; 
    congeCom:string; dimancheOuNon:boolean; cta:string; motCommercant:string; logo:ImageData; entiteLegale:string; bceTva:number;
-   nomPrenom:string; telephoneRepresentant:number; emailReprésentant:string;}){
+   nomPrenom:string; telephoneRepresentant:number; emailReprésentant:string; photoCommercant:ImageData;}){
    this._output = value;
  }
  constructor(private builder: FormBuilder) {
@@ -233,6 +233,7 @@ export class InfosGeneraleComponent implements OnInit {
      ]],
      "motCommercant":[''],
      "logo":[''],
+     "photoCommercant":[''],
      "entiteLegale":['',
      [
      Validators.required
@@ -252,8 +253,8 @@ export class InfosGeneraleComponent implements OnInit {
    })
   }
   name = 'Angular 4';
-  logourl = 'nature.jpeg';
-  photoCommercanturl='';
+  logourl:string = '';
+  photoCommercanturl:string='';
   onSelectLogo(event) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
@@ -261,7 +262,7 @@ export class InfosGeneraleComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
-        this.logourl = event.target.result;
+        this.logourl = reader.result as string;
       }
     }
   }
@@ -272,7 +273,7 @@ export class InfosGeneraleComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
-        this.photoCommercanturl = event.target.result;
+        this.photoCommercanturl = reader.result as string;
       }
     }
   }
